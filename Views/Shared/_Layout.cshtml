@@ -3,53 +3,90 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - InstitutionManagmentSystem</title>
+    <title>@ViewData["Title"] - InstitutionManagementSystem</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/InstitutionManagmentSystem.styles.css" asp-append-version="true" />
-@*     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> *@
+    <style>
+        /* Ensuring the sidebar and main content take full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
+        .container-fluid {
+            height: 100%;
+            padding-left: 15px; /* Add some left padding */
+            padding-right: 15px; /* Add some right padding */
+        }
+
+        .sidebar {
+            height: 100vh; /* Full viewport height */
+            position: fixed; /* Fix the sidebar */
+            top: 0;
+            left: 0;
+            z-index: 100; /* Ensure it appears above other content */
+            background-color: #f8f9fa; /* Light background color */
+            padding: 20px; /* Padding inside the sidebar */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+            .sidebar .nav-link {
+                padding: 10px 15px; /* Padding for the links */
+                border-radius: 5px; /* Rounded corners */
+            }
+
+
+            .sidebar .nav-link:hover {
+                background-color: #e9ecef; /* Hover effect */
+                color: #333; /* Text color on hover */
+            }
+
+        main {
+            margin-left: 220px; /* Adjust based on sidebar width */
+            padding: 20px; /* Add some padding for the main content */
+            background-color: #fff; /* White background for main content */
+            border-radius: 8px; /* Rounded corners for main content */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">InstitutionManagmentSystem</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">
+                                Home
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+                            <a class="nav-link" asp-area="" asp-controller="Students" asp-action="Index">
+                                Students
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Teachers" asp-action="Index">Teachers</a>
+                            <a class="nav-link" asp-area="" asp-controller="Teachers" asp-action="Index">
+                                Teachers
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Halaqat" asp-action="Index">Halaqat</a>
+                            <a class="nav-link" asp-area="" asp-controller="Halaqat" asp-action="Index">
+                                Halaqat
+                            </a>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+            </nav>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 1446 - InstitutionManagmentSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-4">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
