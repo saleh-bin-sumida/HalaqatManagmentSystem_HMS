@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Teacher>
+@{
+    ViewData["Title"] = "Teachers List";
+}
+
+<h2>Teachers List</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Teacher</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var teacher in Model)
+        {
+            <tr>
+                <td>@teacher.FistName</td>
+                <td>@teacher.LastName</td>
+                <td>@teacher.PhoneNumber</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@teacher.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@teacher.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@teacher.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script>
+        // Check if there's a delete message in TempData and show an alert
+        @if (TempData["DeleteMessage"] != null)
+        {
+            <text>
+                    alert('@TempData["DeleteMessage"]');
+            </text>
+        }
+    </script>
+}

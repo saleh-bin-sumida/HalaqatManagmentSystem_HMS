@@ -1,0 +1,32 @@
+﻿@model Halaqa
+@{
+    ViewData["Title"] = "Create Halaqa";
+}
+
+<h2>Create Halaqa</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TeacherId" class="control-label">Teacher</label>
+        <select asp-for="TeacherId" asp-items="ViewBag.Teachers" class="form-control">
+            <option value="">-- Select Teacher --</option>
+        </select>
+        <span asp-validation-for="TeacherId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}
